@@ -1,0 +1,8 @@
+name: "run"
+version: "0.1.0"
+usage: "Integrate Keybase.io tools with Draft"
+description: |-
+  This plugin provides Keybase services to Draft.
+ignoreFlags: false
+useTunnel: false
+command: "$DRAFT_PLUGIN_DIR/bin/draft-run"
