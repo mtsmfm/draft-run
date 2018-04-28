@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  test: &test
+    working_directory: /go/src/github.com/mtsmfm/draft-run
+    docker:
+      - image: golang:1.10.1
+    steps:
+      - checkout
+      - run: make build
+
+  release:
+    <<: *test
+    steps:
+      - checkout
+      - run: make release
+
+workflows:
+  version: 2
+  test-and-release:
+    jobs:
+      - test
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
